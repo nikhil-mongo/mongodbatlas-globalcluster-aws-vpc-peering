@@ -24,7 +24,7 @@ resource "aws_route" "central-internet_access" {
 resource "aws_route" "central-peeraccess" {
   provider                  = aws.eucentral
   route_table_id            = aws_vpc.central.main_route_table_id
-  destination_cidr_block    = "192.168.240.0/21"
+  destination_cidr_block    = var.atlas_vpc_cidr_2
   vpc_peering_connection_id = mongodbatlas_network_peering.aws-atlas-central.connection_id
   depends_on                = [aws_vpc_peering_connection_accepter.central-peer]
 }
