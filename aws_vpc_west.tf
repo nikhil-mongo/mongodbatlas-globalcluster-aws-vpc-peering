@@ -20,7 +20,7 @@ resource "aws_route" "west-internet_access" {
 
 resource "aws_route" "west-peeraccess" {
   route_table_id            = aws_vpc.west.main_route_table_id
-  destination_cidr_block    = "192.168.240.0/21"
+  destination_cidr_block    = var.atlas_vpc_cidr_1
   vpc_peering_connection_id = mongodbatlas_network_peering.aws-atlas-west.connection_id
   depends_on                = [aws_vpc_peering_connection_accepter.west-peer]
 }
